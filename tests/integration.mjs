@@ -3,7 +3,7 @@
 // Test items without history are deleted. One ledger item is preserved by design.
 import assert from 'node:assert/strict';
 
-export async function run(base = 'http://127.0.0.1:8056') {
+export async function run(base = 'http://localhost/tes_fadzarar') {
     let cookie = '';
     const results = [];
     async function request(path, data) {

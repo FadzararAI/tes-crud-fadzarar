@@ -19,16 +19,6 @@ PHP 7/8 cannot run the original legacy API directly: [PHP removed the legacy mys
 4. Copy `config.example.php` to `config.local.php`. Set host/port, username, password and database. Use a local application account with SELECT, INSERT, UPDATE and DELETE on `tes_fadzarar` after importing the schema with an administrative account. Local credentials are Git-ignored.
 5. Open `http://localhost/tes_fadzarar/info.php`. Confirm PHP 5.6 and the **mysql** section, then open `http://localhost/tes_fadzarar/`.
 
-### Current preview and setup status
-
-During implementation an official PHP 5.6.40 archive was downloaded from [PHP's Windows archive](https://windows.php.net/downloads/releases/archives/) into the Git-ignored `tests/runtime/php` directory. It successfully loads the real mysql extension. An optional loopback preview is available with:
-
-```powershell
-.\Start-Local.ps1
-```
-
-Then open `http://127.0.0.1:8056/`. If the downloaded runtime is absent in a fresh clone, supply `-PhpPath` pointing to an official PHP 5.6 executable with the required DLLs. This preview uses PHP's local server, not WAMP Apache.
-
 The current Git-ignored local config points to WAMP **MySQL 5.5.62 on port 3306**. The dashboard connection and imported `tes_fadzarar` database were confirmed on that server. PHP's real `mysql` extension is still absent from WAMP; the app currently reaches MySQL through its `mysqli` fallback. To demonstrate the actual extension in `info.php`, install a compatible `php_mysql.dll` for the PHP 5.6 build and enable it in the Apache PHP configuration.
 
 ## Use and stock rules
@@ -56,7 +46,7 @@ Read [EDITING.md](EDITING.md) for the file map, a complete example of adding a s
 - Mechanical UI scan produced heuristic warnings concerning navigation underlines and colors across unrelated selectors. Browser visual/mobile/keyboard checks could **not** run because the browser host was unavailable; no visual sign-off is claimed.
 - The folder was served by WAMP Apache and loaded its sample inventory after the MySQL 5.5 connection was configured. Browser visual/mobile/keyboard checks were unavailable.
 
-To repeat HTTP checks with Node 18+ and the preview running:
+To repeat HTTP checks with Node 18+ while WAMP Apache and MySQL are running:
 
 ```powershell
 node tests/integration.mjs
