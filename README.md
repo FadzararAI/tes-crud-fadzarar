@@ -1,6 +1,6 @@
 # Stockroom — Paket B
 
-An English warehouse inventory application using simple procedural PHP and Tailwind CSS. Includes item CRUD, seeded categories, inventory search, immutable stock movements, inclusive date filters and quantity recaps.
+An English warehouse inventory application using simple procedural PHP and Tailwind CSS. Includes item CRUD, assigned user display, seeded categories, inventory search, immutable stock movements, inclusive date filters and quantity recaps.
 
 ## Requirements and agreed environment
 
@@ -23,7 +23,7 @@ The current Git-ignored local config points to WAMP **MySQL 5.5.62 on port 3306*
 
 ## Use and stock rules
 
-- Add an item with a unique SKU, name, category, unit and rupiah unit price. Starting stock is always zero.
+- Add an item with a unique SKU, name, category, unit, assigned user and rupiah unit price. Starting stock is always zero.
 - Edit changes item descriptions and price, never stock. Delete asks for JavaScript confirmation and submits a CSRF-protected POST.
 - Record incoming or outgoing quantities as positive whole numbers. Outgoing movements cannot exceed the current available balance.
 - The item row is locked inside an InnoDB transaction; stock and the movement record commit together or roll back together.

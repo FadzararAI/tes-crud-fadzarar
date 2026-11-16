@@ -43,6 +43,7 @@ CREATE TABLE `items` (
   `unit` varchar(24) NOT NULL,
   `unit_price` decimal(14,2) unsigned NOT NULL,
   `stock` int(10) unsigned NOT NULL DEFAULT 0,
+  `user_input` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `sku` (`sku`),
   KEY `category_id` (`category_id`),
@@ -52,11 +53,11 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'PKG-001','Shipping carton · medium',1,'box',8500.00,105);
-INSERT INTO `items` VALUES (2,'PKG-002','Packing tape',1,'roll',12000.00,48);
-INSERT INTO `items` VALUES (3,'OFF-001','A4 copy paper',2,'ream',55000.00,30);
-INSERT INTO `items` VALUES (4,'OFF-002','Permanent marker',2,'piece',7500.00,60);
-INSERT INTO `items` VALUES (5,'SAF-001','Warehouse work gloves',3,'pair',25000.00,25);
+INSERT INTO `items` VALUES (1,'PKG-001','Shipping carton · medium',1,'box',8500.00,105,'Warehouse staff');
+INSERT INTO `items` VALUES (2,'PKG-002','Packing tape',1,'roll',12000.00,48,'Warehouse staff');
+INSERT INTO `items` VALUES (3,'OFF-001','A4 copy paper',2,'ream',55000.00,30,'Warehouse staff');
+INSERT INTO `items` VALUES (4,'OFF-002','Permanent marker',2,'piece',7500.00,60,'Warehouse staff');
+INSERT INTO `items` VALUES (5,'SAF-001','Warehouse work gloves',3,'pair',25000.00,25,'Warehouse staff');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 DROP TABLE IF EXISTS `transactions`;

@@ -9,7 +9,8 @@ $item = array(
     'name' => '',
     'category_id' => '',
     'unit' => '',
-    'unit_price' => ''
+    'unit_price' => '',
+    'user_input' => '',
 );
 
 if ($editing) {
@@ -35,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $item['category_id'] = input($_POST, 'category_id');
     $item['unit'] = input($_POST, 'unit');
     $item['unit_price'] = input($_POST, 'unit_price');
+    $item['user_input'] = input($_POST, 'user_input');
 
     if (!preg_match('/^[A-Za-z0-9][A-Za-z0-9_-]{0,39}$/D', $item['sku'])) {
         $errors[] = 'SKU must be 1–40 letters, numbers, hyphens or underscores, starting with a letter or number.';
@@ -46,6 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($item['unit'] === '' || mb_strlen($item['unit'], 'UTF-8') > 24) {
         $errors[] = 'Enter a unit of 1–24 characters.';
+    }
+
+    if ($item['user_input'] === '' || mb_strlen($item['user_input'], 'UTF-8') > 100) {
+        $errors[] = 'Enter a user name of 1–100 characters.';
     }
 
     $categoryId = positive_id($item['category_id']);

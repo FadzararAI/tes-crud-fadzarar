@@ -78,6 +78,17 @@
                 value="<?php echo e($item['unit_price']); ?>"
             >
         </div>
+
+        <div>
+            <label for="user_input">User</label>
+            <input
+                required
+                type="text"
+                id="user_input"
+                name="user_input"
+                value="<?php echo e($item['user_input']); ?>"
+            >
+        </div>
     </div>
 
     <div class="form-footer">

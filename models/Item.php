@@ -63,7 +63,9 @@ function item_save($item, $categoryId, $id = 0)
         . ',name=' . sql_string($item['name'])
         . ',category_id=' . (int)$categoryId
         . ',unit=' . sql_string($item['unit'])
-        . ',unit_price=' . sql_string($item['unit_price']);
+        . ',unit_price=' . sql_string($item['unit_price'])
+        . ',user_input=' . sql_string($item['user_input']);
+
 
     if ($id) {
         return query('UPDATE items SET ' . $values . ' WHERE id=' . (int)$id);

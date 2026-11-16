@@ -12,6 +12,7 @@ CREATE TABLE items (
  unit VARCHAR(24) NOT NULL,
  unit_price DECIMAL(14,2) UNSIGNED NOT NULL,
  stock INT UNSIGNED NOT NULL DEFAULT 0,
+ user_input VARCHAR(100) NOT NULL,
  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 CREATE TABLE transactions (
@@ -26,12 +27,12 @@ CREATE TABLE transactions (
  FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 INSERT INTO categories (id,name) VALUES (1,'Packaging'),(2,'Office supplies'),(3,'Safety equipment');
-INSERT INTO items (id,sku,name,category_id,unit,unit_price) VALUES
- (1,'PKG-001','Shipping carton · medium',1,'box',8500),
- (2,'PKG-002','Packing tape',1,'roll',12000),
- (3,'OFF-001','A4 copy paper',2,'ream',55000),
- (4,'OFF-002','Permanent marker',2,'piece',7500),
- (5,'SAF-001','Warehouse work gloves',3,'pair',25000);
+INSERT INTO items (id,sku,name,category_id,unit,unit_price,user_input) VALUES
+ (1,'PKG-001','Shipping carton · medium',1,'box',8500,'Warehouse staff'),
+ (2,'PKG-002','Packing tape',1,'roll',12000,'Warehouse staff'),
+ (3,'OFF-001','A4 copy paper',2,'ream',55000,'Warehouse staff'),
+ (4,'OFF-002','Permanent marker',2,'piece',7500,'Warehouse staff'),
+ (5,'SAF-001','Warehouse work gloves',3,'pair',25000,'Warehouse staff');
 START TRANSACTION;
 INSERT INTO transactions (item_id,type,quantity,transaction_date,notes) VALUES
  (1,'IN',120,'2026-11-01','Sample opening receipt'),(2,'IN',48,'2026-11-01','Sample opening receipt'),

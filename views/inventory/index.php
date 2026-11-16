@@ -54,6 +54,8 @@
                 <th>Category</th>
                 <th class="numeric">Unit price</th>
                 <th class="numeric">On hand</th>
+                <th class="string">Unit</th>
+                <th>User</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -70,8 +72,9 @@
                         <span class="stock <?php echo !$item['stock'] ? 'zero' : ''; ?>">
                             <?php echo e($item['stock']); ?>
                         </span>
-                        <span class="muted"><?php echo e($item['unit']); ?></span>
                     </td>
+                    <td><?php echo e($item['unit']); ?></td>
+                    <td><?php echo e($item['user_input']); ?></td>
                     <td>
                         <div class="actions">
                             <a href="edit.php?id=<?php echo e($item['id']); ?>">Edit</a>
@@ -91,7 +94,7 @@
 
             <?php if (!$items): ?>
                 <tr>
-                    <td colspan="5" class="empty">
+                    <td colspan="7" class="empty">
                         No items found. Change your filters or
                         <a href="tambah.php">add an item</a>.
                     </td>
